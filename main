@@ -211,11 +211,11 @@ case $n in
     echo ""
     echo -e "\n Downloading ${BEDROCK_VERSION} Bedrock server"
     
-    apt update && apt install -y zip unzip wget curl
-    DOWNLOAD_URL=https://minecraft.azureedge.net/bin-linux/bedrock-server-$BEDROCK_VERSION.zip
-fi
-
-DOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d"/" -f5) # Retrieve archive name 
+    apt update && apt -y install unzip wget
+    
+    wget https://cdn.discordapp.com/attachments/957271452757921842/1005346022995800126/bedrock.zip
+    
+    unzip bedrock.zip
 
     echo -e "Install Completed"
 
