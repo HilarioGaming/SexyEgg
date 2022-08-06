@@ -30,6 +30,10 @@ then
     echo "$(tput setaf 1)Looks like you tried making bedrock server in non-asia nodes lmao"
 else
 
+if [ ! -f "$FILE" ]
+then
+    mkdir -p plugins
+    display
 echo "
   $(tput setaf 1)Made By ewn#9981 & fate#0993
   $(tput setaf 3)What Server Software you goin to use lmao
@@ -69,8 +73,3 @@ case $n in
     echo "Invalid option, exiting.."
     exit
   ;;
-~
-~
-~
-~
-~
