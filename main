@@ -37,6 +37,11 @@ FILE=eula.txt
 
 # Currently this is still in development.
 
+function launchBedrockServer {
+  # Using Aikars flags.
+  ./bedrock_server
+}
+
 function optimizeJavaServer {
   # Decreasing view distance.
   echo "view-distance=6" >> server.properties
@@ -67,7 +72,7 @@ if [ ! -f "$FILE" ]
 then
     mkdir -p plugins
     display
-sleep 5
+sleep 1
 echo "
   $(tput setaf 1)Made By ewn#9981 & fate#0993
   $(tput setaf 3)What Server Software you goin to use lmao
@@ -204,61 +209,19 @@ case $n in
 
   7)
     echo ""
-    echo "Downloading latest Bedrock"
-    
-    apt update
-apt install -y zip unzip wget curl
-
-if [ ! -d /mnt/server/ ]; then
-    mkdir /mnt/server/
-fi
-
-cd /mnt/server
-
-# Minecraft CDN Akamai blocks script user-agents
-RANDVERSION=$(echo $((1 + $RANDOM % 4000)))
-
-if [ -z "${BEDROCK_VERSION}" ] || [ "${BEDROCK_VERSION}" == "latest" ]; then
-    echo -e "\n Downloading latest Bedrock server"
-    curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.$RANDVERSION.212 Safari/537.36" -H "Accept-Language: en" -H "Accept-Encoding: gzip, deflate" -o versions.html.gz https://www.minecraft.net/en-us/download/server/bedrock
-    DOWNLOAD_URL=$(zgrep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' versions.html.gz)
-else 
     echo -e "\n Downloading ${BEDROCK_VERSION} Bedrock server"
+    
+    apt update && apt install -y zip unzip wget curl
     DOWNLOAD_URL=https://minecraft.azureedge.net/bin-linux/bedrock-server-$BEDROCK_VERSION.zip
 fi
 
-DOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d"/" -f5) # Retrieve archive name
+DOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d"/" -f5) # Retrieve archive name 
 
-echo -e "backing up config files"
-rm *.bak versions.html.gz
-cp server.properties server.properties.bak
-cp permissions.json permissions.json.bak
-cp whitelist.json whitelist.json.bak
+    echo -e "Install Completed"
 
-echo -e "Downloading files from: $DOWNLOAD_URL"
+    display
 
-curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.$RANDVERSION.212 Safari/537.36" -H "Accept-Language: en" -o $DOWNLOAD_FILE $DOWNLOAD_URL
-
-echo -e "Unpacking server files"
-unzip -o $DOWNLOAD_FILE
-
-echo -e "Cleaning up after installing"
-rm $DOWNLOAD_FILE
-
-echo -e "restoring backup config files - on first install there will be file not found errors which you can ignore."
-cp -rf server.properties.bak server.properties
-cp -rf permissions.json.bak permissions.json
-cp -rf whitelist.json.bak whitelist.json
-
-chmod +x bedrock_server
-
-echo -e "Install Completed"
-
-display
-
-./bedrock_server
-    
-    exit
+    ./bedrock_server
   ;;
 
   8)
