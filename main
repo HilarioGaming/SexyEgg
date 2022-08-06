@@ -41,8 +41,8 @@ function launchBedrockServer {
   # Using Aikars flags.
   ./bedrock_server
 }
-
-if [ -f "bedrock_server" ]; then
+BEDROCK=bedrock_server
+if [ -f "$BEDROCK" ]; then
   display
   launchBedrockServer
 fi
