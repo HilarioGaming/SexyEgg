@@ -42,6 +42,11 @@ function launchBedrockServer {
   ./bedrock_server
 }
 
+if [ -f "bedrock_server" ]; then
+  display
+  launchBedrockServer
+fi
+
 function optimizeJavaServer {
   # Decreasing view distance.
   echo "view-distance=6" >> server.properties
