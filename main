@@ -241,7 +241,7 @@ case $n in
   ;;
 
   *) 
-    echo "Invalid option, exiting..."
+    echo "Invalid option, exiting.."
     exit
   ;;
 esac  
@@ -254,8 +254,7 @@ if [ -f BungeeCord.jar ]; then
   java -Xms512M -Xmx512M -jar BungeeCord.jar
 fi
 if [ -f bedrock_server ]; then
-  display
-  ./bedrock_server
+  launchBedrockServer
 else
 if [ ! -f hA5AW4Ni6Si6S4WvZ4WvZhA5AW4N.png ]; then
 # Force the server icon.
