@@ -41,9 +41,8 @@ function launchBedrockServer {
   # Using Aikars flags.
   ./bedrock_server
 }
-BEDROCK=bedrock_server
-if [ -f "$BEDROCK" ]; then
-  launchBedrockServer
+if [[ -f bedrock_server ]]; then
+    ./bedrock_server
 fi
 
 function optimizeJavaServer {
