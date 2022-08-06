@@ -72,7 +72,6 @@ if [ ! -f "$FILE" ]
 then
     mkdir -p plugins
     display
-sleep 1
 echo "
   $(tput setaf 1)Made By ewn#9981 & fate#0993
   $(tput setaf 3)What Server Software you goin to use lmao
