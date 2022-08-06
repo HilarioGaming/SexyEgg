@@ -252,7 +252,7 @@ fi
 if [ -f BungeeCord.jar ]; then
   display
   java -Xms512M -Xmx512M -jar BungeeCord.jar
-else
+fi
 if [ -f bedrock_server ]; then
   display
   ./bedrock_server
