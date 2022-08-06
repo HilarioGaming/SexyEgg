@@ -43,7 +43,6 @@ function launchBedrockServer {
 }
 BEDROCK=bedrock_server
 if [ -f "$BEDROCK" ]; then
-  display
   launchBedrockServer
 fi
 
