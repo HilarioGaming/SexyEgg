@@ -83,6 +83,8 @@ echo "
   "
 read -r n
 
+sleep 3
+
 if [[ -f bedrock_server ]]; then
     ./bedrock_server
 fi
