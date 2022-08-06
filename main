@@ -41,9 +41,6 @@ function launchBedrockServer {
   # Using Aikars flags.
   ./bedrock_server
 }
-if [[ -f bedrock_server ]]; then
-    ./bedrock_server
-fi
 
 function optimizeJavaServer {
   # Decreasing view distance.
@@ -85,6 +82,10 @@ echo "
   5) Paper 1.18.1      10) Discord Python
   "
 read -r n
+
+if [[ -f bedrock_server ]]; then
+    ./bedrock_server
+fi
 
 # I was uploading all the server jars to Discord because I was in hurry for vacation lol, will do a complete recode soon.
 case $n in
