@@ -60,7 +60,7 @@ IP=$(curl -s https://checkip.amazonaws.com)
 if [ ! "$IP" = 52.187.23.163 ] && [ ! "$IP" = 51.13.180.4 ] && [ ! "$IP" = 195.201.61.35 ] && [ ! "$IP" = 57.128.5.146 ] && [ ! "$IP" = 20.205.38.247 ] && [ ! "$IP" = 20.198.120.116 ] && [ ! "$IP" = 52.187.23.163 ]
 then
     display
-    echo "$(tput setaf 1)This node is not authorized to use this Multi-Egg. Reason: Invalid IP."
+    echo "$(tput setaf 1)This node is not authorized to use this SexyEgg. Reason: Invalid IP."
 else 
 
 if [ ! -f "$FILE" ]
