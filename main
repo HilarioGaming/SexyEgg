@@ -81,7 +81,7 @@ echo "
   4) Paper 1.17.1      9)  Discord NodeJS 
   5) Paper 1.18.1      10) Discord Python
   "
-  echo "$(tput setaf 1)RESTART YOUR SERVER IF YOU HAVE A SERVER SOFTWARE ALREADY INSTALLED."
+  echo "$(tput setaf 1)RESTART YOUR SERVER IF YOU HAVE A SERVER SOFTWARE ALREADY INSTALLED AND THIS APPEARED AGAIN."
   
 read -r n
 
