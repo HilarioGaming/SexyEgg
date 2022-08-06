@@ -83,12 +83,6 @@ echo "
   "
 read -r n
 
-sleep 3
-
-if [[ -f bedrock_server ]]; then
-    ./bedrock_server
-fi
-
 # I was uploading all the server jars to Discord because I was in hurry for vacation lol, will do a complete recode soon.
 case $n in
   1) 
@@ -259,6 +253,9 @@ fi
 if [ -f "BungeeCord.jar" ]; then
   display
   java -Xms512M -Xmx512M -jar BungeeCord.jar
+fi
+if [[ -f bedrock_server ]]; then
+    ./bedrock_server
 fi
 if [ ! -f hA5AW4Ni6Si6S4WvZ4WvZhA5AW4N.png ]; then
 # Force the server icon.
