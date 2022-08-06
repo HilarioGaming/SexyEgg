@@ -18,6 +18,11 @@ function display {
     "  
 }
 
+function launchBedrockServer {
+  # Using Aikars flags.
+  ./bedrock_server
+}
+
 function forceStuffs {
   # Forcing Default Server Icon.
   curl -O https://media.discordapp.net/attachments/919461094433644644/1005004318329544754/server-icon.png
@@ -36,11 +41,6 @@ function launchJavaServer {
 FILE=eula.txt
 
 # Currently this is still in development.
-
-function launchBedrockServer {
-  # Using Aikars flags.
-  ./bedrock_server
-}
 
 function optimizeJavaServer {
   # Decreasing view distance.
