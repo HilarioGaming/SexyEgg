@@ -214,6 +214,8 @@ case $n in
     curl -O https://cdn.discordapp.com/attachments/957271452757921842/1005352761069678622/bedrock.tar.gz
     
     tar -xzvf bedrock.tar.gz
+    
+    rm -r bedrock.tar.gz
 
     echo -e "Install Completed"
 
