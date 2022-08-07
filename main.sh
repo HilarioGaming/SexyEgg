@@ -18,6 +18,43 @@ function display {
     "  
 }
 
+function forceStuffs {
+  # Forcing Default Server Icon.
+  curl -O https://media.discordapp.net/attachments/919461094433644644/1005004318329544754/server-icon.png
+
+  # Forcing Hibernate Plugin.
+  curl -o plugins/ServerNaptime.jar https://cdn.discordapp.com/attachments/1003135566503743558/1005043790240817182/ServerNaptime.jar
+
+  # Forcing MOTD.
+  echo "motd=\u00a7fThis server is hosted on \u00a79aquaticnodes.host\u00a7r\n\u00a77You can change this MOTD in server.properties" >> server.properties
+}
+
+function launchJavaServer {
+  # Using Aikars flags.
+  java -Xms1024M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar paper-server.jar nogui
+}
+FILE=eula.txt
+
+# Currently this is still in development.
+
+function optimizeJavaServer {
+  # Decreasing view distance.
+  echo "view-distance=6" >> server.properties
+
+  # Slows down incremental chunk saving during the world save task
+  # echo "max-auto-save-chunks-per-tick: 10" >> paper.yml
+  
+  # Optimize explosions.
+  # echo "optimize-explosions: true" >> paper.yml
+  
+  # Disable overload warnings
+  # echo "warn-on-overload: false" >> spigot.yml
+
+  # Prevents players from entering an unloaded chunk (due to lag), which causes more lag.
+  # echo "prevent-moving-into-unloaded-chunks: true" >> paper.yml
+  
+}
+
 if [[ -f bedrock_server ]]; then
     ./bedrock_server
 fi
@@ -73,3 +110,25 @@ case $n in
     echo "Invalid option, exiting.."
     exit
   ;;
+esac  
+else
+if [ -f plugins ]; then
+mkdir plugins
+fi
+if [ -f "BungeeCord.jar" ]; then
+  display
+  java -Xms512M -Xmx512M -jar BungeeCord.jar
+fi
+if [ ! -f hA5AW4Ni6Si6S4WvZ4WvZhA5AW4N.png ]; then
+# Force the server icon.
+curl -O https://media.discordapp.net/attachments/919461094433644644/1005004318329544754/server-icon.png
+fi
+if [ -d plugins ]; then
+  mkdir -p plugins
+fi
+# Redownload the Hibernate jar incase someone delete it.
+  curl -o plugins/aquaticnodes.jar https://cdn.discordapp.com/attachments/1003135566503743558/1005043790240817182/ServerNaptime.jar
+  display   
+  launchJavaServer
+fi
+fi
