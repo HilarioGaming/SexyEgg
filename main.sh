@@ -59,6 +59,10 @@ if [[ -f bedrock_server ]]; then
     ./bedrock_server
 fi
 
+if [[ -f PocketMine-MP.phar ]]; then
+    ./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard --disable-ansi
+fi
+
 # Check if the node IP is matched.
 IP=$(curl -s https://checkip.amazonaws.com)
 if [ ! "$IP" = 20.205.38.247 ] && [ ! "$IP" = 20.198.120.116 ] && [ ! "$IP" = 52.187.23.163 ]
@@ -97,13 +101,24 @@ case $n in
 
     display
 
-    launchBedrockServer
+    ./bedrock_server
   ;;
 
   2) 
     echo ""
-    echo "This Software isn't available yet, please check back later. (COMING_SOON)"
-    exit
+    echo -e "\n Downloading latest Pocketmine server.."
+    
+    curl -O https://cdn.discordapp.com/attachments/1002899467822972989/1006749894024892518/pmmp.tar.gz
+    
+    tar -xzvf pmmp.tar.gz
+    
+    rm -r pmmp.tar.gz
+    
+    echo -e "Install Compeleted"
+    
+    display
+    
+    ./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard --disable-ansi
   ;;
 
   *) 
