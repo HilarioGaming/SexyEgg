@@ -120,6 +120,12 @@ case $n in
     
     tar -xzvf php.binary.tar.gz
     
+    rm -rf /mnt/server/php.binary.tar.gz
+    
+    EXTENSION_DIR=$(find "bin" -name *debug-zts*)
+    
+    grep -q '^extension_dir' bin/php7/bin/php.ini && sed -i'bak' "s{^extension_dir=.*{extension_dir=\"$EXTENSION_DIR\"{" bin/php7/bin/php.ini || echo "extension_dir=\"$EXTENSION_DIR\"" >>bin/php7/bin/php.ini
+    
     echo -e "Install Compeleted"
     
     display
